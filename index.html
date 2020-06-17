@@ -1,0 +1,370 @@
+
+Model Search:  <input type="text" id="model_number" length="20"><input type="submit" value="search" onclick="search_model()">
+<div id="message" style="color:red;">
+</div>
+<script>
+var harddrives = [{
+    "Manufacturer - Width": "WD - 3.5",
+    "Model No": "WD20EFAX",
+    "Model Name": "2TB WD Red",
+    "Type": "DM-SMR",
+    "Notes": "(1) and (4), EFRX is CMR"
+  },
+  {
+    "Manufacturer - Width": "WD - 3.5",
+    "Model No": "WD30EFAX",
+    "Model Name": "3TB WD Red",
+    "Type": "DM-SMR",
+    "Notes": "(4), EFRX is CMR"
+  },
+  {
+    "Manufacturer - Width": "WD - 3.5",
+    "Model No": "WD40EFAX",
+    "Model Name": "4TB WD Red",
+    "Type": "DM-SMR",
+    "Notes": "(1) and (4), EFRX is CMR"
+  },
+  {
+    "Manufacturer - Width": "WD - 3.5",
+    "Model No": "WD60EFAX",
+    "Model Name": "6TB WD Red",
+    "Type": "DM-SMR",
+    "Notes": "(1) and (4), EFRX is CMR"
+  },
+  {
+    "Manufacturer - Width": "WD - 3.5",
+    "Model No": "WD20EZAZ",
+    "Model Name": "2TB Blue",
+    "Type": "DM-SMR",
+    "Notes": "(4), EZRZ is CMR"
+  },
+  {
+    "Manufacturer - Width": "WD - 3.5",
+    "Model No": "WD30EZAZ",
+    "Model Name": "3TB Blue",
+    "Type": "DM-SMR",
+    "Notes": "?, EZRZ is CMR"
+  },
+  {
+    "Manufacturer - Width": "WD - 3.5",
+    "Model No": "WD40EZAZ",
+    "Model Name": "4TB Blue",
+    "Type": "DM-SMR",
+    "Notes": "?, EZRZ is CMR"
+  },
+  {
+    "Manufacturer - Width": "WD - 3.5",
+    "Model No": "WD60EZAZ",
+    "Model Name": "6TB Blue",
+    "Type": "DM-SMR",
+    "Notes": "(4), EZRZ is CMR"
+  },
+  {
+    "Manufacturer - Width": "WD - 3.5",
+    "Model No": "WD40EMAZ",
+    "Model Name": "4TB Elements",
+    "Type": "DM-SMR",
+    "Notes": -12
+  },
+  {
+    "Manufacturer - Width": "WD - 3.5",
+    "Model No": "WD60EMAZ",
+    "Model Name": "6TB Elements",
+    "Type": "DM-SMR",
+    "Notes": -12
+  },
+  {
+    "Manufacturer - Width": "WD - 3.5",
+    "Model No": "WD60EDAZ",
+    "Model Name": "6TB My Book",
+    "Type": "DM-SMR",
+    "Notes": -14
+  },
+  {
+    "Manufacturer - Width": "Seagate - 3.5",
+    "Model No": "ST2000DM005",
+    "Model Name": "2TB Barracuda",
+    "Type": "DM-SMR",
+    "Notes": "Inferred from (8)"
+  },
+  {
+    "Manufacturer - Width": "Seagate - 3.5",
+    "Model No": "ST2000DM008",
+    "Model Name": "2TB Barracuda",
+    "Type": "DM-SMR",
+    "Notes": -2
+  },
+  {
+    "Manufacturer - Width": "Seagate - 3.5",
+    "Model No": "ST3000DM007",
+    "Model Name": "3TB Barracuda",
+    "Type": "DM-SMR",
+    "Notes": "Inferred from (8)"
+  },
+  {
+    "Manufacturer - Width": "Seagate - 3.5",
+    "Model No": "ST4000DM004",
+    "Model Name": "4TB Barracuda",
+    "Type": "DM-SMR",
+    "Notes": -2
+  },
+  {
+    "Manufacturer - Width": "Seagate - 3.5",
+    "Model No": "ST5000DM003",
+    "Model Name": "5TB Barracuda",
+    "Type": "DM-SMR",
+    "Notes": "2TB platter as per (15)"
+  },
+  {
+    "Manufacturer - Width": "Seagate - 3.5",
+    "Model No": "ST6000DM003",
+    "Model Name": "6TB Barracuda",
+    "Type": "DM-SMR",
+    "Notes": "Inferred from (8)"
+  },
+  {
+    "Manufacturer - Width": "Seagate - 3.5",
+    "Model No": "ST8000DM004",
+    "Model Name": "8TB Barracuda",
+    "Type": "DM-SMR",
+    "Notes": -2
+  },
+  {
+    "Manufacturer - Width": "Seagate - 3.5",
+    "Model No": "ST5000DM000",
+    "Model Name": "5TB Desktop",
+    "Type": "DM-SMR",
+    "Notes": -2
+  },
+  {
+    "Manufacturer - Width": "Seagate - 3.5",
+    "Model No": "ST5000AS0011",
+    "Model Name": "5TB Archive",
+    "Type": "DM-SMR",
+    "Notes": -3
+  },
+  {
+    "Manufacturer - Width": "Seagate - 3.5",
+    "Model No": "ST6000AS0002",
+    "Model Name": "6TB Archive v2",
+    "Type": "DM-SMR",
+    "Notes": -3
+  },
+  {
+    "Manufacturer - Width": "Seagate - 3.5",
+    "Model No": "ST8000AS0002",
+    "Model Name": "8TB Archive v2",
+    "Type": "HA-SMR",
+    "Notes": "(3) and (10)"
+  },
+  {
+    "Manufacturer - Width": "Seagate - 3.5",
+    "Model No": "ST8000AS0003",
+    "Model Name": "8TB Exos (Archive v3)",
+    "Type": "DM-SMR",
+    "Notes": -2
+  },
+  {
+    "Manufacturer - Width": "Toshiba - 3.5",
+    "Model No": "HDWD240UZSVA",
+    "Model Name": "4TB P300 Desktop",
+    "Type": "DM-SMR",
+    "Notes": -11
+  },
+  {
+    "Manufacturer - Width": "Toshiba - 3.5",
+    "Model No": "HDWD260UZSVA",
+    "Model Name": "6TB P300 Desktop",
+    "Type": "DM-SMR",
+    "Notes": -11
+  },
+  {
+    "Manufacturer - Width": "Toshiba - 3.5",
+    "Model No": "DT02ABA400",
+    "Model Name": "4TB DT02(-V)",
+    "Type": "DM-SMR",
+    "Notes": -11
+  },
+  {
+    "Manufacturer - Width": "Toshiba - 3.5",
+    "Model No": "DT02ABA600",
+    "Model Name": "6TB DT02(-V)",
+    "Type": "DM-SMR",
+    "Notes": -11
+  },
+  {
+    "Manufacturer - Width": "HGST - 3.5",
+    "Model No": "DC HC600 Series",
+    "Model Name": "14TB, 15TB and 20TB Ultrastar",
+    "Type": "HM-SMR",
+    "Notes": -9
+  },
+  {
+    "Manufacturer - Width": "---",
+    "Model No": "---",
+    "Model Name": "---",
+    "Type": "---",
+    "Notes": ""
+  },
+  {
+    "Manufacturer - Width": "Toshiba - 2.5",
+    "Model No": "HDWL110",
+    "Model Name": "1TB L200 Slim",
+    "Type": "DM-SMR",
+    "Notes": -11
+  },
+  {
+    "Manufacturer - Width": "Toshiba - 2.5",
+    "Model No": "HDWL120",
+    "Model Name": "2TB L200",
+    "Type": "DM-SMR",
+    "Notes": "(11), see also list at (18)"
+  },
+  {
+    "Manufacturer - Width": "Toshiba - 2.5",
+    "Model No": "MQ04ABF100",
+    "Model Name": "1TB MQ04",
+    "Type": "DM-SMR",
+    "Notes": -11
+  },
+  {
+    "Manufacturer - Width": "Toshiba - 2.5",
+    "Model No": "MQ04ABD200",
+    "Model Name": "2TB MQ04",
+    "Type": "DM-SMR",
+    "Notes": -11
+  },
+  {
+    "Manufacturer - Width": "WD - 2.5",
+    "Model No": "WD9000LPZX",
+    "Model Name": "900GB Blue",
+    "Type": "DM-SMR",
+    "Notes": -16
+  },
+  {
+    "Manufacturer - Width": "WD - 2.5",
+    "Model No": "WD10SPZX",
+    "Model Name": "1TB Blue",
+    "Type": "DM-SMR",
+    "Notes": "(4), also as HGST Travelstar, see (20)"
+  },
+  {
+    "Manufacturer - Width": "WD - 2.5",
+    "Model No": "WD10SPWX",
+    "Model Name": "1TB Blue",
+    "Type": "DM-SMR",
+    "Notes": -16
+  },
+  {
+    "Manufacturer - Width": "WD - 2.5",
+    "Model No": "WD10SPSX",
+    "Model Name": "1TB Black",
+    "Type": "DM-SMR",
+    "Notes": -4
+  },
+  {
+    "Manufacturer - Width": "WD - 2.5",
+    "Model No": "WD20SPZX",
+    "Model Name": "2TB Blue",
+    "Type": "DM-SMR",
+    "Notes": -4
+  },
+  {
+    "Manufacturer - Width": "WD - 2.5",
+    "Model No": "Various",
+    "Model Name": "Not For Resale",
+    "Type": "DM-SMR",
+    "Notes": "List at (17)"
+  },
+  {
+    "Manufacturer - Width": "Seagate - 2.5",
+    "Model No": "ST1000LM048",
+    "Model Name": "1TB Barracuda",
+    "Type": "DM-SMR",
+    "Notes": "(7), see also list at (19)"
+  },
+  {
+    "Manufacturer - Width": "Seagate - 2.5",
+    "Model No": "ST2000LM015",
+    "Model Name": "2TB Barracuda",
+    "Type": "DM-SMR",
+    "Notes": "(7), see also list at (19)"
+  },
+  {
+    "Manufacturer - Width": "Seagate - 2.5",
+    "Model No": "ST3000LM024",
+    "Model Name": "3TB Barracuda",
+    "Type": "DM-SMR",
+    "Notes": "(7), see also list at (19)"
+  },
+  {
+    "Manufacturer - Width": "Seagate - 2.5",
+    "Model No": "ST4000LM024",
+    "Model Name": "4TB Barracuda",
+    "Type": "DM-SMR",
+    "Notes": "(7), see also list at (19)"
+  },
+  {
+    "Manufacturer - Width": "Seagate - 2.5",
+    "Model No": "ST5000LM000",
+    "Model Name": "5TB Barracuda",
+    "Type": "DM-SMR",
+    "Notes": "(7), see also list at (19)"
+  }
+]
+var _table_ = document.createElement('table'),
+  _tr_ = document.createElement('tr'),
+  _th_ = document.createElement('th'),
+  _td_ = document.createElement('td');
+
+function buildHtmlTable(arr) {
+  var table = _table_.cloneNode(false),
+    columns = addAllColumnHeaders(arr, table);
+  for (var i = 0, maxi = arr.length; i < maxi; ++i) {
+    var tr = _tr_.cloneNode(false);
+    for (var j = 0, maxj = columns.length; j < maxj; ++j) {
+      var td = _td_.cloneNode(false);
+      cellValue = arr[i][columns[j]];
+      td.appendChild(document.createTextNode(arr[i][columns[j]] || ''));
+      tr.appendChild(td);
+    }
+    table.appendChild(tr);
+  }
+  return table;
+}
+
+// Adds a header row to the table and returns the set of columns.
+// Need to do union of keys from all records as some records may not contain
+// all records
+function addAllColumnHeaders(arr, table) {
+  var columnSet = [],
+    tr = _tr_.cloneNode(false);
+  for (var i = 0, l = arr.length; i < l; i++) {
+    for (var key in arr[i]) {
+      if (arr[i].hasOwnProperty(key) && columnSet.indexOf(key) === -1) {
+        columnSet.push(key);
+        var th = _th_.cloneNode(false);
+        th.appendChild(document.createTextNode(key));
+        tr.appendChild(th);
+      }
+    }
+  }
+  table.appendChild(tr);
+  return columnSet;
+}
+
+function search_model() {
+  harddrives.forEach(function(item, index) {
+    var query = document.getElementById("model_number").value;
+    console.log(item["Model No"] === query);
+    if (item["Model No"] === query)
+      document.getElementById("message").innerHTML = "Your hard drive is SMR";
+    else
+      document.getElementById("message").innerHTML = "";
+
+  });
+
+  return false;
+}
+document.body.appendChild(buildHtmlTable(harddrives));
+</script>
