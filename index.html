@@ -1,7 +1,5 @@
 
 Model Search:  <input type="text" id="model_number" length="20"><input type="submit" value="search" onclick="search_model()">
-<div id="message" style="color:red;">
-</div>
 <script>
 var harddrives = [{
     "Manufacturer - Width": "WD - 3.5",
@@ -357,11 +355,7 @@ function search_model() {
   harddrives.forEach(function(item, index) {
     var query = document.getElementById("model_number").value;
     console.log(item["Model No"] === query);
-    if (item["Model No"] === query)
-      document.getElementById("message").innerHTML = "Your hard drive is SMR";
-    else
-      document.getElementById("message").innerHTML = "";
-
+    if (item["Model No"] === query) alert("It is SMR!);
   });
 
   return false;
